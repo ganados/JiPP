@@ -1,22 +1,27 @@
 #include <iostream>
 
-int main(){
-    
-    double height;
-    double weight;
-    std::cout << "Enter your weight [kg] and height [m]: ";
-    std::cin >> weight >> height;
+bool palindrom(std::string word, int wordLength){
+    if(wordLength == 1) return true; //check for one letter word
 
-    double bmi = weight / (height * height);
-    std::cout << "Your BMI: " << bmi << std::endl;
+//    std::cout << word << std::endl;
+    for(int i = 0, j = wordLength - 1; i < wordLength / 2, j > wordLength / 2; i++, j--){
+        if(isspace(word[i])) i++;
+        if(isspace(word[j])) j--; //skip space
+
+        if(word[i] != word[j]) return false; //check if first and last letter(etc) are the same
+    }
+    return true;
+}
+
+int main(int argc, char* argv[]){
    
-    if(bmi < 16) std::cout << "starvation" << std::endl;
-    else if(bmi > 15.99 && bmi < 17) std::cout << "emaciation" << std::endl;
-    else if(bmi > 16.99 && bmi < 18.50) std::cout << "underweight" << std::endl;
-    else if(bmi > 18.49 && bmi < 25) std::cout << "correct value" << std::endl;
-    else if(bmi > 24.99 && bmi < 30) std::cout << "Obesity I degree" << std::endl;
-    else if(bmi > 29.99 && bmi < 40) std::cout << "2nd degree of obesity" << std::endl;
-    else std::cout << "extreme obesity" << std::endl;
+    std::string word = argv[1];
+    int wordLength = word.length(); //check length
 
+//    std::cout << std::endl << argv[1] << " " << wordLength << std::endl;
+
+    if(palindrom(word, wordLength)) std::cout << "It's a palindrome" << std::endl;
+    else std::cout << "It's not a palindrome" << std::endl;
+   
     return 0;
 }
