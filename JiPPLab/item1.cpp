@@ -18,7 +18,7 @@ void insertSort(int *&numArray, int argc){
 
 int main(int argc, char* argv[]){
 
-    int *numArray = new int [argc];
+    int *numArray = new int [argc - 1];
     for(int i = 0; i < argc - 1; i++){
         numArray[i] = atoi(argv[i + 1]);
 //        std::cout << argv[i + 1] << " ";
