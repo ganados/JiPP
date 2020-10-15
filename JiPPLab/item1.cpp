@@ -1,6 +1,6 @@
 #include <iostream>
 
-void insertSort(int *&numArray, int argc){
+void insertSort(int *numArray, int argc){
     int j;
     int storedValue;
  
@@ -32,5 +32,7 @@ int main(int argc, char* argv[]){
         std::cout << numArray[i] << " ";
     }
 
+    delete numArray;
+    
     return 0;
 }
