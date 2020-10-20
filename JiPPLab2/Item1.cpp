@@ -25,6 +25,18 @@ int sumAndProduct(int *product, int firstValue, int secondValue){
     return (firstValue + secondValue);
 }
 
+void swapValues(int* firstValue, int* secondValue){
+        int trash = *firstValue;
+        *firstValue = *secondValue;
+        *secondValue = trash;
+}
+
+void overloadedSwapValues(int &firstValue, int &secondValue){
+    int trash;
+    trash = firstValue;
+    firstValue = secondValue;
+    secondValue = trash;
+}
 
 int main(){
 
@@ -55,5 +67,15 @@ int main(){
     int sum = sumAndProduct(&product, aValue, bValue);
     std::cout << "Result of a + b: " << sum << std::endl << "Result of a * b: " << product << std::endl;
 
+// -------------------------------Fifth --------------------------
+    std::cout << "Fifth task, swap 2 values" << std::endl;
+    swapValues(&aValue, &bValue);
+    std::cout << aValue << " " << bValue << std::endl;
+
+// -------------------------------Sixth --------------------------
+    std::cout << "Sixth task, swap 2 values with overloading" << std::endl;
+    overloadedSwapValues(aValue, bValue);
+    std::cout << aValue << " " << bValue << std::endl;
+    
     return 0;
 }
