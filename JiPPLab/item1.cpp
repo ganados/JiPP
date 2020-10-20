@@ -32,7 +32,7 @@ int main(int argc, char* argv[]){
         std::cout << numArray[i] << " ";
     }
 
-    delete numArray;
+    delete [] numArray;
     
     return 0;
 }
