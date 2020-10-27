@@ -38,6 +38,14 @@ void overloadedSwapValues(int &firstValue, int &secondValue){
     secondValue = trash;
 }
 
+void overloadedSwapValues(float &firstValue, float &secondValue){
+    float trash;
+    trash = firstValue;
+    firstValue = secondValue;
+    secondValue = trash;
+}
+
+
 int main(){
 
     int aValue = 4;
