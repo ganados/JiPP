@@ -45,6 +45,10 @@ void overloadedSwapValues(float &firstValue, float &secondValue){
     secondValue = trash;
 }
 
+template <typename swapp>
+    void swapOverVal(swapp &a, swapp &b){
+        b = a + b - (a = b);
+    }
 
 int main(){
 
@@ -84,6 +88,11 @@ int main(){
     std::cout << "Sixth task, swap 2 values with overloading" << std::endl;
     overloadedSwapValues(aValue, bValue);
     std::cout << aValue << " " << bValue << std::endl << std::endl;
+
+// -------------------------------Sixth Version 2 --------------------------
+    std::cout << "Sixth task version 2" << std::endl;
+    swapOverVal<int>(aValue, bValue);
+    std::cout << aValue << " " << bValue << std::endl <<std::endl;
 
     return 0;
 }
