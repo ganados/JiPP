@@ -1,10 +1,17 @@
 #include <iostream>
 
-class matrix {
+class matrixTask {
     private:
-        double** matrix;
+        double** matrix = nullptr;
     public:
-        matrix::matrix (){
-            
-        }
+        matrixTask(int cols, int rows);
+        ~matrixTask();
+        void printMatrix();
 };
+
+matrixTask::matrixTask(int cols, int rows){
+    matrix = new double *[rows];
+    for(int i = 0; i < cols; i++)
+        matrix[i] = new double;
+}
+matrixTask::~matrixTask(){};
