@@ -22,21 +22,20 @@ matrixTask::matrixTask(int size){
 
 matrixTask::matrixTask(std::string filePath){
     std::ifstream file;
+    std::vector <double> temp;
     file.open(filePath.c_str());
-    char x;
     if (file.good()){
         int rows, cols;
         file >> rows >> cols;
         int trash;
-        std::vector <double> temp;
+    for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
-                file >> trash;
+                file >> trash; 
                 temp.push_back(trash);
             }
-            file >> x;
-        for(int i = 0; i < rows; i++){
             matrix.push_back(temp);
-      }
+            temp.clear();
+        }
     }
     file.close();
 }
@@ -72,7 +71,7 @@ matrixTask matrixTask::multiply(matrixTask m2){
     int nCols = cols();
     int m2Rows = m2.rows();
     int m2Cols = m2.cols();
-    int valueHolder = 0;
+    double valueHolder = 0;
     matrixTask resultMatrix = matrixTask(m2Cols, nRows);
     for(int i = 0; i < nRows; i++){
         for(int j = 0; j < m2Cols; j++){
