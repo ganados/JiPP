@@ -114,7 +114,7 @@ void matrixTask::print(){
 bool matrixTask::store(std::string fileName, std::string filePath)
 {
     std::ofstream file;
-    file.open(fileName.c_str());
+    file.open((filePath + fileName).c_str());
     if (!file.good())
         return false;
 
