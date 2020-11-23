@@ -1,4 +1,4 @@
-#include "../include/matrices.hpp"
+#include "../include/lab4/matrices.hpp"
 
 matrixTask::matrixTask(int rows, int cols){
     std::vector <double> temp;
@@ -42,7 +42,7 @@ matrixTask::matrixTask(std::string filePath){
 
 matrixTask::~matrixTask(){};
 
-matrixTask matrixTask::add(matrixTask m2){
+matrixTask matrixTask::add(matrixTask &m2){
     int nRows = rows();
     int nCols = cols();
     matrixTask resultMatrix = matrixTask(nRows, nCols);
@@ -54,7 +54,7 @@ matrixTask matrixTask::add(matrixTask m2){
     return resultMatrix;    
 }
 
-matrixTask matrixTask::subtract(matrixTask m2){
+matrixTask matrixTask::subtract(matrixTask &m2){
     int nRows = rows();
     int nCols = cols();
     matrixTask resultMatrix = matrixTask(nRows, nCols);
@@ -66,7 +66,7 @@ matrixTask matrixTask::subtract(matrixTask m2){
     return resultMatrix;    
 }
 
-matrixTask matrixTask::multiply(matrixTask m2){
+matrixTask matrixTask::multiply(matrixTask &m2){
     int nRows = rows();
     int nCols = cols();
     int m2Rows = m2.rows();

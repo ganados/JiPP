@@ -1,3 +1,0 @@
-# JiPP
-
-THE BEGINNING
