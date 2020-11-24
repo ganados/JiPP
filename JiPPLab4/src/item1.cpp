@@ -47,11 +47,11 @@ int main(){
     resultMatrix3.print();
     std::cout << std::endl;
     std::cout << "---------------------------- Store matrix in file  ----------------------------" <<std::endl;
-    if(resultMatrix3.store("pliczekStore", "./txtFiles/"))
+    if(resultMatrix3.store("pliczekStore", "./"))
         std::cout << "The file has been saved" << std::endl;
 
     std::cout << "---------------------------- constructor from file ----------------------------" <<std::endl;
-    matrixTask resultMatrix4 = matrixTask("./txtFiles/pliczek");
+    matrixTask resultMatrix4 = matrixTask("./pliczek");
     resultMatrix4.print();
 
     return 0;
