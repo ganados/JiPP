@@ -1,4 +1,4 @@
-#include "../include/lab4/matrices.hpp"
+#include <lab4/matrices.hpp>
 
 int main(){
     matrixTask firstMatrix = matrixTask(5,6);

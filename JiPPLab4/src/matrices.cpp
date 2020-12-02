@@ -1,4 +1,4 @@
-#include "../include/lab4/matrices.hpp"
+#include <lab4/matrices.hpp>
 
 matrixTask::matrixTask(int rows, int cols){
     std::vector <double> temp;
