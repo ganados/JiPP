@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iomanip>
 #include <ctime>
+#include <exception>
 
 class matrixTask {
     private:

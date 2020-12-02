@@ -86,11 +86,21 @@ matrixTask matrixTask::multiply(matrixTask &m2){
 }
 
 void matrixTask::set(int posN, int posM, double value){
-    matrix.at(posN).at(posM) = value;
+    try{
+        matrix.at(posN).at(posM) = value;
+    }
+    catch (const std::exception& error){
+        std::cout << error.what() << std::endl;
+    }
 }
 
 double matrixTask::get(int posN, int posM){
-    return matrix.at(posN).at(posM);
+    try{
+      return matrix.at(posN).at(posM);
+    }
+    catch (const std::exception& error){
+        std::cout << error.what() << std::endl;
+    }
 }
 
 int matrixTask::cols(){
@@ -101,8 +111,7 @@ int matrixTask::rows(){
     return matrix.size();
 }
 
-void matrixTask::print(){
-    
+void matrixTask::print(){  
     for(int i = 0; i < rows(); i++){
         for(int j = 0; j < cols(); j++){
             std::cout << std::setw(10) << matrix[i][j];
@@ -111,8 +120,7 @@ void matrixTask::print(){
     }
 }
 
-bool matrixTask::store(std::string fileName, std::string filePath)
-{
+bool matrixTask::store(std::string fileName, std::string filePath){
     std::ofstream file;
     file.open((filePath + fileName).c_str());
     if (!file.good())
