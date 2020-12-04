@@ -15,7 +15,7 @@ class matrixTask {
         matrixTask(int rows, int cols);
         matrixTask(int size);
         matrixTask(std::string filePath);
-        ~matrixTask();
+        ~matrixTask() = default;
         void set(int posN, int posM, double value);
         double get(int posN, int posM);
         matrixTask add(matrixTask &m2);
@@ -27,3 +27,11 @@ class matrixTask {
         bool store(std::string fileName, std::string filePath);
 };
 #endif
+
+/*      ERRORS
+    *   [100] Add matrices, different size
+    *   [101] Subtract matrices, different size
+    *   [102] Multiply matrices, different size
+    * 
+    * 
+*/

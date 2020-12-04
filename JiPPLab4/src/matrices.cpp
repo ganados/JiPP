@@ -23,11 +23,13 @@ matrixTask::matrixTask(int size){
 matrixTask::matrixTask(std::string filePath){
     std::ifstream file;
     std::vector <double> temp;
+
     file.open(filePath.c_str());
     if (file.good()){
         int rows, cols;
         file >> rows >> cols;
         int trash;
+
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
                 file >> trash; 
@@ -45,25 +47,44 @@ matrixTask::~matrixTask(){};
 matrixTask matrixTask::add(matrixTask &m2){
     int nRows = rows();
     int nCols = cols();
-    matrixTask resultMatrix = matrixTask(nRows, nCols);
-    for(int i = 0; i < nRows; i++){
-        for(int j = 0; j < nCols; j++){
-            (resultMatrix.matrix)[i][j] = matrix[i][j] + (m2.matrix)[i][j];
+    try{
+        if(nRows != m2.rows() || nCols != m2.cols()){
+            throw 100;
         }
+        matrixTask resultMatrix = matrixTask(nRows, nCols);
+        for(int i = 0; i < nRows; i++){
+            for(int j = 0; j < nCols; j++){
+                resultMatrix.set(i, j, (get(i,j) + m2.get(i,j)));
+//              (resultMatrix.matrix)[i][j] = matrix[i][j] + (m2.matrix)[i][j];
+            }
+        }
+        return resultMatrix;
     }
-    return resultMatrix;    
+    catch (int e){
+        std::cout << "Matrices add exception: " << e << "Check errors table\n";
+    }
+    return *this;
 }
 
 matrixTask matrixTask::subtract(matrixTask &m2){
     int nRows = rows();
     int nCols = cols();
-    matrixTask resultMatrix = matrixTask(nRows, nCols);
-    for(int i = 0; i < nRows; i++){
-        for(int j = 0; j < nCols; j++){
-            (resultMatrix.matrix)[i][j] = matrix[i][j] - (m2.matrix)[i][j];
+    try{
+        if(nRows != m2.rows() || nCols != m2.cols()){
+            throw 101;
         }
+        matrixTask resultMatrix = matrixTask(nRows, nCols);
+        for(int i = 0; i < nRows; i++){
+            for(int j = 0; j < nCols; j++){
+                resultMatrix.set(i, j, (get(i,j) - m2.get(i,j)));
+//              (resultMatrix.matrix)[i][j] = matrix[i][j] - (m2.matrix)[i][j];
+            }
+        }
+        return resultMatrix;
+    } catch (int e){
+        std::cout << "Matrices subtract exception: " << e << "Check errors table\n";
     }
-    return resultMatrix;    
+    return *this;
 }
 
 matrixTask matrixTask::multiply(matrixTask &m2){
@@ -72,35 +93,47 @@ matrixTask matrixTask::multiply(matrixTask &m2){
     int m2Rows = m2.rows();
     int m2Cols = m2.cols();
     double valueHolder = 0;
-    matrixTask resultMatrix = matrixTask(m2Cols, nRows);
-    for(int i = 0; i < nRows; i++){
-        for(int j = 0; j < m2Cols; j++){
-            valueHolder = 0;
-            for(int k = 0; k < m2Rows; k++){
-                valueHolder += matrix[i][k] * (m2.matrix)[k][j];
-            }
-            (resultMatrix.matrix)[i][j] = valueHolder;
-        }     
+    try{
+        if(nCols != m2Rows){
+            throw 102;
+        }
+        matrixTask resultMatrix = matrixTask(m2Cols, nRows);
+        for(int i = 0; i < nRows; i++){
+            for(int j = 0; j < m2Cols; j++){
+                valueHolder = 0;
+                for(int k = 0; k < m2Rows; k++){
+                    valueHolder += get(i,k) * m2.get(k,j);
+                }
+                resultMatrix.set(i, j, valueHolder);
+            }     
+        }
+        return resultMatrix;
     }
-    return resultMatrix;  
+    catch(int e){
+        std::cout << "Matrices multiply exception: " << e << "Check errors table\n";
+    }
+    return *this;
 }
 
 void matrixTask::set(int posN, int posM, double value){
     try{
         matrix.at(posN).at(posM) = value;
     }
-    catch (const std::exception& error){
+    catch (const std::exception &error){
         std::cout << error.what() << std::endl;
     }
 }
 
 double matrixTask::get(int posN, int posM){
+    double value;
     try{
-      return matrix.at(posN).at(posM);
+        value = matrix.at(posN).at(posM);
     }
-    catch (const std::exception& error){
+    catch (const std::exception &error){
         std::cout << error.what() << std::endl;
+        return -1;
     }
+    return value;
 }
 
 int matrixTask::cols(){

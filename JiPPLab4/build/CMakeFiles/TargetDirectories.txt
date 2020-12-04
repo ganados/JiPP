@@ -1,0 +1,3 @@
+C:/Users/Informatyk/Documents/Git/JiPP/JiPPLab4/build/CMakeFiles/output.dir
+C:/Users/Informatyk/Documents/Git/JiPP/JiPPLab4/build/CMakeFiles/edit_cache.dir
+C:/Users/Informatyk/Documents/Git/JiPP/JiPPLab4/build/CMakeFiles/rebuild_cache.dir
