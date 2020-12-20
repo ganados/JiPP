@@ -7,14 +7,14 @@
 
 class hrms{
     private:
-        std::list <class employee> epmployees;
-        std::map <class employee, std::string> emDepartments;
+        std::list <class employee> employees;
+        std::map <std::string, class employee> emDepartments;
         std::map <class employee, double> emEarnings;
 
     public:
         hrms();
         ~hrms();
-        hrms add(employee emp, double salary);
+        hrms add(employee& emp, double salary);
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeID, double salary);
         void printSalaries();

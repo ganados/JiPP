@@ -7,8 +7,18 @@ class employee {
         std::string ID;
         std::string name;
         std::string surname;
-        std::string departmendID;
+        std::string departmentID;
         std::string position;
+        friend class hrms;
+    public:
+    std::string getID();
+    std::string getName();
+    std::string getSurname();
+    std::string getdepartmentID();
+    std::string getPosition();
+    void printEmployeAll();
+    void printEmployeByDepartments():
+
 };
 
 #endif
