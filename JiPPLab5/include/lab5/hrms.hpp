@@ -1,9 +1,11 @@
 #ifndef HRMS_HPP
 #define HRMS_HPP
-#include <vector>
 #include <list>
 #include <map>
-#include <lab5\employee.hpp>
+#include <algorithm>
+
+//#include <lab5\employee.hpp>
+#include "./employee.hpp"
 
 class hrms{
     private:
@@ -14,7 +16,7 @@ class hrms{
     public:
         hrms();
         ~hrms();
-        hrms add(employee& emp, double salary);
+        void add(employee& emp, double salary);
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeID, double salary);
         void printSalaries();

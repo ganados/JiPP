@@ -11,13 +11,15 @@ class employee {
         std::string position;
         friend class hrms;
     public:
+    employee(std::string ID, std::string name, std::string surname, std::string departmentID, std::string position);
+    ~employee();
     std::string getID();
     std::string getName();
     std::string getSurname();
     std::string getdepartmentID();
     std::string getPosition();
     void printEmployeAll();
-    void printEmployeByDepartments():
+    void printEmployeByDepartments();
 
 };
 

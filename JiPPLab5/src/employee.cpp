@@ -1,5 +1,13 @@
-#include <lab5\employee.hpp>
+//#include <lab5\employee.hpp>
+#include "../include/lab5/employee.hpp"
 
+employee::employee(std::string ID, std::string name, std::string surname, std::string departmentID, std::string position){
+    this -> ID = ID;
+    this -> name = name;
+    this -> surname = surname;
+    this -> departmentID = departmentID;
+    this -> position = position;
+}
 
 std::string employee::getID(){
     return this->ID;
