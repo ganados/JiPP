@@ -1,13 +1,13 @@
 //#include <lab5\hrms.hpp>
 #include "..\include\lab5\hrms.hpp"
 
-void hrms::add(employee& emp, double salary){
+void hrms::add(employee& emp, double salary) noexcept(false) {
     employees.push_back(emp);
     emDepartments.insert({emp.departmentID,emp});
     emEarnings.insert({emp, salary});
 }
 
-void hrms::printDepartment(std::string departmentID){
+void hrms::printDepartment(std::string departmentID) noexcept {
     std::cout << "Employees from " << departmentID << " department: " << std::endl;
 /*
     for(auto element : emDepartments){
@@ -23,7 +23,7 @@ void hrms::printDepartment(std::string departmentID){
     }
 }
 
-void hrms::changeSalary(std::string employeID, double salary){
+void hrms::changeSalary(std::string employeID, double salary) noexcept(false) {
     
     for(auto &element : this -> emEarnings){
         if(element.first.ID == employeID){
@@ -32,7 +32,7 @@ void hrms::changeSalary(std::string employeID, double salary){
     }
 }
 
-void hrms::printSalaries(){
+void hrms::printSalaries() noexcept {
     std::cout << "List of employees: " << std::endl;
     std::cout << "-----------------------------------------------------" << std::endl;
     for(auto &element : this -> emEarnings){
@@ -46,19 +46,29 @@ void hrms::printSalaries(){
     }
 }
 
-void hrms::printSalariesSorted(){
+bool hrms::cmp(std::pair <class employee, double>& a,
+               std::pair <class employee, double>& b) noexcept {
+//                   return (a.second > b.second);
+                    return ((std::get<double>(a)) < (std::get<double>(b)));
+               }
+
+void hrms::printSalariesSorted() noexcept {
  //   sort(emEarnings.begin(), emEarnings.end());
 
-    std::vector <std::pair <employee, double>> sorted;
+    std::vector <std::pair <class employee, double>> sorted;
     
     for(auto &element : this -> emEarnings){
-        sorted.push_back(std::make_pair(""))
+        sorted.push_back(std::make_pair(element.first,element.second));
     }
-    
-    
+
+//    std::sort(sorted.begin(), sorted.end(), [](std::pair <class employee, double> &a, std::pair <class employee, double> &b){
+//      return (a.second) < (b.second);
+//   });
+    std::sort(sorted.begin(), sorted.end(), cmp);
+
     std::cout << "List of employees: " << std::endl;
     std::cout << "-----------------------------------------------------" << std::endl;
-    for(auto &element : emEarnings){
+    for(auto &element : sorted){
         std::cout << "ID: " << element.first.ID << std::endl;
         std::cout << "Name: " << element.first.name << std::endl;
         std::cout << "Surname: " << element.first.surname << std::endl;
