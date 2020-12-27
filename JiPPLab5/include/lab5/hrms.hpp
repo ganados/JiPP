@@ -2,6 +2,7 @@
 #define HRMS_HPP
 #include <list>
 #include <map>
+#include <vector>
 #include <algorithm>
 
 //#include <lab5\employee.hpp>

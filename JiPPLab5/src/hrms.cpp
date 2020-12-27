@@ -49,9 +49,16 @@ void hrms::printSalaries(){
 void hrms::printSalariesSorted(){
  //   sort(emEarnings.begin(), emEarnings.end());
 
+    std::vector <std::pair <employee, double>> sorted;
+    
+    for(auto &element : this -> emEarnings){
+        sorted.push_back(std::make_pair(""))
+    }
+    
+    
     std::cout << "List of employees: " << std::endl;
     std::cout << "-----------------------------------------------------" << std::endl;
-    for(auto &element : this -> emEarnings){
+    for(auto &element : emEarnings){
         std::cout << "ID: " << element.first.ID << std::endl;
         std::cout << "Name: " << element.first.name << std::endl;
         std::cout << "Surname: " << element.first.surname << std::endl;
