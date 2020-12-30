@@ -7,6 +7,6 @@ fi
 if [ -f "./CMakeLists.txt" ]; then
     echo `cmake -B build -G "MinGW Makefiles"`
     echo `mingw32-make --directory=build`
-    sleep 100
+    sleep 1
     exit
 fi

@@ -1,7 +1,7 @@
-#include <iostream>
+//#include <iostream>
 
 //#include <lab5\employee.hpp>
-#include "..\include\lab5\employee.hpp"
+//#include "..\include\lab5\employee.hpp"
 //#include <lab5\hrms.hpp>
 #include "..\include\lab5\hrms.hpp"
 
