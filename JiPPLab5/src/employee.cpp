@@ -1,12 +1,11 @@
-//#include <lab5\employee.hpp>
-#include "../include/lab5/employee.hpp"
+#include <lab5\employee.hpp>
+//#include "../include/lab5/employee.hpp"
 
-employee::employee(std::string _ID, std::string _name, std::string _surname, std::string _departmentID, std::string _position){
-    this -> ID = _ID;
-    this -> name = _name;
-    this -> surname = _surname;
-    this -> departmentID = _departmentID;
-    this -> position = _position;
+employee::employee(std::string ID, std::string name, std::string surname, std::string position){
+    this -> ID = ID;
+    this -> name = name;
+    this -> surname = surname;
+    this -> position = position;
 }
 
 employee::employee(){}
@@ -29,6 +28,10 @@ std::string employee::getDepartmentID(){
 
 std::string employee::getPosition(){
     return this -> position;
+}
+
+void employee::setDepartment(std::string departmentID){
+    this -> departmentID = departmentID;
 }
 
 void employee::printEmploye(){

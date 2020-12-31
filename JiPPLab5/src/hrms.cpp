@@ -1,18 +1,19 @@
-//#include <lab5\hrms.hpp>
-#include "..\include\lab5\hrms.hpp"
+#include <lab5\hrms.hpp>
+//#include "..\include\lab5\hrms.hpp"
 
 hrms::hrms(){}
 
-void hrms::add(employee& emp, double salary) {
+void hrms::add(employee& emp, std::string departmentID, double salary) {
+    emp.setDepartment(departmentID);
     this -> employees[emp.getID()] = emp;
-    this -> emDepartments[emp.getDepartmentID()].push_back(emp.getID());
+    this -> emDepartments[departmentID].push_back(emp.getID());
     this -> emEarnings[emp.getID()] = salary;
 }
 
 void hrms::printDepartment(std::string departmentID){
     std::cout << "Employees from " << departmentID << " department: " << std::endl;
     for(auto &element : emDepartments[departmentID]){
-        std::cout << element << std::endl;
+        std::cout << "ID: " <<element << std::endl;
         employees.at(element).printEmploye();
     }
 }

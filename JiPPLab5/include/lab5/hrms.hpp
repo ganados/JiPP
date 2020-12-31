@@ -7,8 +7,8 @@
 #include <string>
 
 
-//#include <lab5\employee.hpp>
-#include ".\employee.hpp"
+#include <lab5\employee.hpp>
+//#include ".\employee.hpp"
 
 class hrms{
     private:
@@ -18,7 +18,7 @@ class hrms{
 
     public:
         hrms();
-        void add(employee& emp, double salary);
+        void add(employee& emp, std::string departmentID, double salary);
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeID, double salary);
         void printSalaries();
