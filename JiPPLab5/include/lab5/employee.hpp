@@ -9,7 +9,6 @@ class employee {
         std::string surname;
         std::string departmentID;
         std::string position;
-//        friend class hrms;
     public:
         employee(std::string ID, std::string name, std::string surname, std::string position);
         employee();

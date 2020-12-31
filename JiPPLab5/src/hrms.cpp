@@ -36,14 +36,6 @@ void hrms::printSalaries(){
     }
 }
 
-bool hrms::cmp(std::pair <class employee, double>& a,
-               std::pair <class employee, double>& b) {
-                    if(a.second > b.second)
-                        return 1;
-                    return 0;
-//                    return ((std::get<double>(a)) < (std::get<double>(b)));
-               }
-
 void hrms::printSalariesSorted(){
 
     std::vector < std::pair <employee, double>> sorted;

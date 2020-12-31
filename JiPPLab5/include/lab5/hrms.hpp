@@ -22,9 +22,6 @@ class hrms{
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeID, double salary);
         void printSalaries();
-//      hrms& operator=(const hrms&);
-//      bool operator<(hrms& temp);
-        bool cmp(std::pair <class employee, double>& a, std::pair <class employee, double>& b);
         void printSalariesSorted();
 };
 

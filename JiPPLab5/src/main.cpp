@@ -1,7 +1,3 @@
-//#include <iostream>
-
-//#include <lab5\employee.hpp>
-//#include "..\include\lab5\employee.hpp"
 #include <lab5\hrms.hpp>
 //#include "..\include\lab5\hrms.hpp"
 
@@ -17,18 +13,6 @@ int main(){
     employee h("D1","nn","oo","zy");
     employee i("D2","uu","pp","yz");
     employee j("D3","rr","ss","x");
-/* 
-    employee a("A1","aa","bb","dep1","x");
-    employee b("A2","cc","dd","dep1","x");
-    employee c("A3","dd","ee","dep1","y");
-    employee d("B1","ff","gg","dep2","x");
-    employee e("B2","hh","ii","dep2","z");
-    employee f("C1","jj","kk","dep3","xy");
-    employee g("C2","ll","mm","dep3","z");
-    employee h("D1","nn","oo","dep4","zy");
-    employee i("D2","uu","pp","dep4","yz");
-    employee j("D3","rr","ss","dep4","x");
-*/
 
     hrms fact;
     fact.add(a,"dep1",2500.0);
