@@ -5,12 +5,12 @@
 hrms::hrms(){}
 
 void hrms::add(employee& emp, std::string departmentID, double salary) {
-    static int temp;
+//    static int temp;
 //    if(employees.find(emp.getID()) != employees.end() && temp !=0){
     if(employees.find(emp.getID()) != employees.end() && !employees.empty()){    
         throw duplicateID();
     }
-    temp++;
+//    temp++;
 
     emp.setDepartment(departmentID);
     this -> employees[emp.getID()] = emp;
