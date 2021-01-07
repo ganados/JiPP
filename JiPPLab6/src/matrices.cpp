@@ -178,3 +178,121 @@ bool matrixTask::store(std::string fileName, std::string filePath){
     file.close();
     return true;
 }
+
+matrixTask matrixTask::operator+(matrixTask &m2){
+    int nRows = rows();
+    int nCols = cols();
+    try{
+        if(nRows != m2.rows() || nCols != m2.cols()){
+            throw 100;
+        }
+        matrixTask resultMatrix = matrixTask(nRows, nCols);
+        for(int i = 0; i < nRows; i++){
+            for(int j = 0; j < nCols; j++){
+               (resultMatrix.matrix)[i][j] = matrix[i][j] + (m2.matrix)[i][j];
+            }
+        }
+        return resultMatrix;
+    }
+    catch (int e){
+        std::cout << "Matrices add exception: " << e << "Check errors table\n";
+    }
+    return *this;
+}
+
+matrixTask matrixTask::operator-(matrixTask &m2){
+int nRows = rows();
+    int nCols = cols();
+    try{
+        if(nRows != m2.rows() || nCols != m2.cols()){
+            throw 101;
+        }
+        matrixTask resultMatrix = matrixTask(nRows, nCols);
+        for(int i = 0; i < nRows; i++){
+            for(int j = 0; j < nCols; j++){
+                (resultMatrix.matrix)[i][j] = matrix[i][j] - (m2.matrix)[i][j];
+            }
+        }
+        return resultMatrix;
+    } catch (int e){
+        std::cout << "Matrices subtract exception: " << e << "Check errors table\n";
+    }
+    return *this;
+}
+
+matrixTask matrixTask::operator*(matrixTask &m2){
+    int nRows = rows();
+    int nCols = cols();
+    int m2Rows = m2.rows();
+    int m2Cols = m2.cols();
+    double valueHolder = 0;
+    try{
+        if(nCols != m2Rows){
+            throw 102;
+        }
+        matrixTask resultMatrix = matrixTask(m2Cols, nRows);
+        for(int i = 0; i < nRows; i++){
+            for(int j = 0; j < m2Cols; j++){
+                valueHolder = 0;
+                for(int k = 0; k < m2Rows; k++){
+                    valueHolder += get(i,k) * m2.get(k,j);
+                }
+                resultMatrix[i][j] = valueHolder;
+            }     
+        }
+        return resultMatrix;
+    }
+    catch(int e){
+        std::cout << "Matrices multiply exception: " << e << "Check errors table\n";
+    }
+    return *this;
+}
+
+bool matrixTask::operator==(matrixTask &m2){
+    try{
+        if(rows() != m2.rows() || cols() != m2.cols()){
+            throw 103;
+        }
+        for(int i = 0; i < rows(); i++){
+            for(int j = 0; j < cols(); j++){
+                if(get(i,j) != m2.get(i,j))
+                    return false;
+            }
+        }
+    }
+    catch(int e){
+        std::cout << "Matrices multiply exception: " << e << "Check errors table\n";
+    }
+    return true;
+}
+
+std::ostream& operator<<(std::ostream& out, matrixTask& m2){
+    out << m2.rows() << " " << m2.cols() << std::endl;
+    for(int i = 0; i < m2.rows(); i++){
+        for(int j = 0; j < m2.cols(); j++){
+            out << m2.get(i,j) << " ";
+        }
+        out << std::endl;
+    }
+    return out;
+}
+
+std::vector<double> matrixTask::operator[](int rows){
+  std::vector <double> temp;
+    try{
+        if(rows < this -> rows()){
+            throw 104;
+        }
+        else if(rows > (this -> rows()) - 1){
+            throw 104;
+        }  
+        for(int i = 0; i < rows; i++){
+            temp.push_back(this -> get(rows, i));
+        }
+    }
+    catch(int e){
+        std::cout << "Matrices multiply exception: " << e << "Check errors table\n";
+    }
+
+    return temp;
+}
