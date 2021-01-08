@@ -1,3 +1,3 @@
 # JiPP
 
-Programming projects, Cracov Univeristy of Technology
+Programming projects, Cracov University of Technology
