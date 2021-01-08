@@ -10,21 +10,21 @@ int main(){
 // uzupelnienie macierzy
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 6; j++){
-            temp = (double)(rand() % 1000 + 1) / (i * j * 10 + 1);
+            temp = (double)(rand() % 1000 + 1) / ((i + 1) * (j + 1) * 10 + 1);
             firstMatrix.set(i,j,temp);
         }
     }
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < 5; j++){
-            temp = (double)(rand() % 100 + 1) / (i * j + 1);
+            temp = (double)(rand() % 100 + 1) / ((i + 1) * (j + 1) + 1);
             secondMatrix.set(i,j,temp);
         }
     }
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
-            temp = (double)(rand() % 1000 + 1) / (i * j * 10 + 1);
+            temp = (double)(rand() % 1000 + 1) / ((i + 1) * (j + 1) * 10 + 1);
             rectMatrix.set(i,j,temp);
-            temp = (double)(rand() % 1000 + 1) / (i * j * 10 + 1);
+            temp = (double)(rand() % 1000 + 1) / ((i + 1) * (j + 1) * 10 + 1);
             rectMatrix2.set(i,j,temp);
         }
     }
@@ -36,16 +36,26 @@ int main(){
     rectMatrix.print();
     std::cout << "---------------------------- rectMatrix2 5x5 ----------------------------" <<std::endl;
     rectMatrix2.print();
+    
     std::cout << "---------------------------- ADD ----------------------------" <<std::endl;
-    matrixTask resultMatrix = rectMatrix.add(rectMatrix2);
+//  matrixTask resultMatrix = rectMatrix.add(rectMatrix2);
+    matrixTask resultMatrix = rectMatrix + rectMatrix2;
     resultMatrix.print();
+    
     std::cout << "---------------------------- SUBTRACT ----------------------------" <<std::endl;
-    matrixTask resultMatrix2 = rectMatrix.subtract(rectMatrix2);
+//  matrixTask resultMatrix2 = rectMatrix.subtract(rectMatrix2);
+    matrixTask resultMatrix2 = rectMatrix - rectMatrix2;
     resultMatrix2.print();
+   
     std::cout << "---------------------------- MULTIPLY  ----------------------------" <<std::endl;
-    matrixTask resultMatrix3 = firstMatrix.multiply(secondMatrix);
+//  matrixTask resultMatrix3 = firstMatrix.multiply(secondMatrix);
+    matrixTask resultMatrix3 = firstMatrix * rectMatrix2;
+    if(resultMatrix3 != firstMatrix)
+        resultMatrix3.print();
+    std::cout << "------" << std::endl;
+    resultMatrix3 = rectMatrix * rectMatrix2;
     resultMatrix3.print();
-    std::cout << std::endl;
+    
     std::cout << "---------------------------- Store matrix in file  ----------------------------" <<std::endl;
     if(resultMatrix3.store("fileStore", "./"))
         std::cout << "The file has been saved" << std::endl;
@@ -55,15 +65,13 @@ int main(){
     resultMatrix4.print();
 
     std::cout << "-------------------------------- TESTS ----------------------------------------" << std::endl;
-    firstMatrix.set(4,4,2);
-    std::cout<<std::endl;
-    std::cout << firstMatrix.get(4,4) << std::endl;
-    std::cout << std::endl;
-    firstMatrix.set(10,10,10);
-    std::cout << std::endl;
-    std::cout << firstMatrix.get(10,10) << std::endl;
+    std::cout << "Operator == " << std::endl;
+    std::cout << "M3 M4 compare: " << (rectMatrix == rectMatrix2) << std::endl;
 
-
-
+    std::cout << "Operator [] " << std::endl;
+    std::vector <double> tempDouble = resultMatrix3[2];
+    for(int i = 0; i < resultMatrix3.cols(); i++){
+        std::cout << tempDouble[i] << " ";
+    }
     return 0;
 }

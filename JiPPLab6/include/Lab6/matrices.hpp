@@ -15,7 +15,7 @@ class matrixTask {
         matrixTask(int rows, int cols);
         matrixTask(int size);
         matrixTask(std::string filePath);
-        ~matrixTask() = default;
+        ~matrixTask();
 
         void set(int posN, int posM, double value);
         double get(int posN, int posM);
@@ -36,6 +36,10 @@ class matrixTask {
         bool operator==(matrixTask &m2);
         friend std::ostream& operator<<(std::ostream& out, matrixTask& m2);
         std::vector<double> operator[](int rows);
+
+        bool operator!=(matrixTask &m2);
+//      bool operator<(double valueF, double valueS);
+//      bool operator>(double valueF, double valueS);
 };
 #endif
 
