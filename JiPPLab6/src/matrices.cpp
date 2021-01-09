@@ -317,6 +317,21 @@ bool matrixTask::operator!=(matrixTask &m2){
     return false;
 }
 
+void matrixTask::operator++(){
+    for(int i = 0; i < rows(); i++){
+        for(int j = 0; j < cols(); j++){
+            set(i, j, get(i, j) + 1);
+        }
+    }
+}
+void matrixTask::operator--(){
+    for(int i = 0; i < rows(); i++){
+        for(int j = 0; j < cols(); j++){
+            set(i, j, get(i, j) - 1);
+        }
+    }
+}
+
 
 
 //bool matrixTask::operator<(double valueF, double valueS){}

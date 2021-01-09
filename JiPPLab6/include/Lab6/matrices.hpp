@@ -38,6 +38,8 @@ class matrixTask {
         std::vector<double> operator[](int rows);
 
         bool operator!=(matrixTask &m2);
+        void operator++();
+        void operator--();
 //      bool operator<(double valueF, double valueS);
 //      bool operator>(double valueF, double valueS);
 };

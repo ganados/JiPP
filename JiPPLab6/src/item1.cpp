@@ -73,5 +73,17 @@ int main(){
     for(int i = 0; i < resultMatrix3.cols(); i++){
         std::cout << tempDouble[i] << " ";
     }
+
+    std::cout << std::endl;
+    resultMatrix4.print();
+    std::cout << "Operator ++ " << std::endl;
+    ++resultMatrix4;
+    std::cout << std::endl;
+    resultMatrix4.print();
+
+    std::cout << "Operator -- " << std::endl;
+    --resultMatrix4;
+    std::cout << std::endl;
+    resultMatrix4.print();
     return 0;
 }
