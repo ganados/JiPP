@@ -1,19 +1,20 @@
 #include <lab5\hrms.hpp>
 #include <lab5\exceptions.hpp>
+
 //#include "..\include\lab5\hrms.hpp"
 
 int main(){
-
-    employee a("A1","aa","bb","x");
-    employee b("A2","cc","dd","x");
-    employee c("A3","dd","ee","y");
-    employee d("B1","ff","gg","x");
-    employee e("B2","hh","ii","z");
-    employee f("C1","jj","kk","xy");
-    employee g("C2","ll","mm","z");
-    employee h("D1","nn","oo","zy");
-    employee i("D2","uu","pp","yz");
-    employee j("D3","rr","ss","x");
+    static int key = 0;
+    employee a(std::to_string(++key),"aa","bb","x");
+    employee b(std::to_string(++key),"cc","dd","x");
+    employee c(std::to_string(++key),"dd","ee","y");
+    employee d(std::to_string(++key),"ff","gg","x");
+    employee e(std::to_string(++key),"hh","ii","z");
+    employee f(std::to_string(++key),"jj","kk","xy");
+    employee g(std::to_string(++key),"ll","mm","z");
+    employee h(std::to_string(++key),"nn","oo","zy");
+    employee i(std::to_string(++key),"uu","pp","yz");
+    employee j(std::to_string(++key),"rr","ss","x");
 
     hrms fact;
    

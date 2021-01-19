@@ -3,10 +3,13 @@
 if [ ! -d './build' ]; then
     echo `mkdir build`
 fi
+if [ -f './idLists.txt' ]; then
+    echo `rm idLists.txt`
+fi
 
 if [ -f "./CMakeLists.txt" ]; then
     echo `cmake -B build -G "MinGW Makefiles"`
     echo `mingw32-make --directory=build`
-    sleep 1
+    sleep 2
     exit
 fi
